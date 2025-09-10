@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz: Introducción a HTML — 20 preguntas</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --accent:#0b74de; --ok:#198754; --err:#dc3545;
+      --muted:#6b7280; --border:#e6e9ef;
+    }
+    body{font-family:Inter,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); margin:0; padding:24px; color:#111;}
+    .container{max-width:920px; margin:0 auto;}
+    header{display:flex; align-items:center; gap:16px; margin-bottom:20px;}
+    header h1{font-size:20px; margin:0;}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px; box-shadow:0 6px 20px rgba(16,24,40,0.04);}
+    .meta{font-size:13px; color:var(--muted); margin-bottom:12px;}
+    ol.questions{counter-reset:item; padding-left:0; margin:0;}
+    li.q{list-style:none; margin-bottom:18px; padding:12px; border-radius:8px; border:1px dashed transparent;}
+    li.q .qtext{font-weight:600; margin-bottom:8px;}
+    .options{display:flex; flex-direction:column; gap:6px;}
+    label.opt{display:flex; align-items:center; gap:10px; padding:8px; border-radius:6px; cursor:pointer; border:1px solid transparent;}
+    input[type="radio"]{accent-color:var(--accent);}
+    .controls{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;}
+    button{background:var(--accent); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer;}
+    button.secondary{background:#fff; color:var(--accent); border:1px solid var(--accent);}
+    button.warn{background:var(--err);}
+    .result{margin-top:16px; padding:12px; border-radius:8px; display:none;}
+    .result.show{display:block;}
+    .correct{color:var(--ok); font-weight:700;}
+    .incorrect{color:var(--err); font-weight:700;}
+    .explain{font-size:13px; color:var(--muted); margin-top:6px;}
+    .score{font-size:18px; font-weight:700;}
+    .small{font-size:13px; color:var(--muted);}
+    .footer{margin-top:18px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;}
+    @media (max-width:640px){ header{flex-direction:column; align-items:flex-start;} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="card" style="padding:12px;">
+        <h1>Actividad interactiva — Introducción a HTML (20 preguntas)</h1>
+        <div class="meta">Selecciona la respuesta correcta en cada pregunta y presiona <strong>Calificar</strong>.</div>
+        <div class="small">Autor: Equipo Didáctico — Módulo: Análisis y Diseño de Reportes</div>
+      </div>
+    </header>
+
+    <main class="card" id="quizCard">
+      <ol class="questions" id="questionsList">
+        <!-- Each question uses data-answer for the correct option key and data-expl for explanation -->
+        <!-- 1 -->
+        <li class="q" data-answer="b" data-expl="<!— DOCTYPE declara la versión de HTML; en HTML5 se usa <!DOCTYPE html> —>">
+          <div class="qtext">1. ¿Cuál es la declaración correcta para indicar HTML5 al inicio de un documento?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q1" value="a"> &lt;!DOCTYPE HTML PUBLIC&gt;</label>
+            <label class="opt"><input type="radio" name="q1" value="b"> &lt;!DOCTYPE html&gt;</label>
+            <label class="opt"><input type="radio" name="q1" value="c"> &lt;html version="5"&gt;</label>
+            <label class="opt"><input type="radio" name="q1" value="d"> &lt;!HTML5&gt;</label>
+          </div>
+        </li>
+
+        <!-- 2 -->
+        <li class="q" data-answer="c" data-expl="&lt;html&gt; es el elemento raíz que contiene head y body.">
+          <div class="qtext">2. ¿Cuál es la etiqueta raíz que envuelve todo el contenido de una página HTML?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q2" value="a"> &lt;head&gt;</label>
+            <label class="opt"><input type="radio" name="q2" value="b"> &lt;body&gt;</label>
+            <label class="opt"><input type="radio" name="q2" value="c"> &lt;html&gt;</label>
+            <label class="opt"><input type="radio" name="q2" value="d"> &lt;document&gt;</label>
+          </div>
+        </li>
+
+        <!-- 3 -->
+        <li class="q" data-answer="a" data-expl="El elemento head contiene meta, title, links a CSS y otros recursos.">
+          <div class="qtext">3. ¿Qué etiqueta contiene metadatos, título y enlaces a hojas de estilo?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q3" value="a"> &lt;head&gt;</label>
+            <label class="opt"><input type="radio" name="q3" value="b"> &lt;meta&gt;</label>
+            <label class="opt"><input type="radio" name="q3" value="c"> &lt;header&gt;</label>
+            <label class="opt"><input type="radio" name="q3" value="d"> &lt;section&gt;</label>
+          </div>
+        </li>
+
+        <!-- 4 -->
+        <li class="q" data-answer="d" data-expl="El atributo alt proporciona texto alternativo accesible y útil.">
+          <div class="qtext">4. ¿Qué atributo es obligatorio (o muy recomendado) en &lt;img&gt; para accesibilidad?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q4" value="a"> srcset</label>
+            <label class="opt"><input type="radio" name="q4" value="b"> title</label>
+            <label class="opt"><input type="radio" name="q4" value="c"> href</label>
+            <label class="opt"><input type="radio" name="q4" value="d"> alt</label>
+          </div>
+        </li>
+
+        <!-- 5 -->
+        <li class="q" data-answer="b" data-expl="&lt;a href='...'&gt; crea un enlace; target='_blank' abre en nueva pestaña.">
+          <div class="qtext">5. ¿Cuál es la etiqueta para crear un enlace a otra página?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q5" value="a"> &lt;link&gt;</label>
+            <label class="opt"><input type="radio" name="q5" value="b"> &lt;a href="..."&gt;</label>
+            <label class="opt"><input type="radio" name="q5" value="c"> &lt;url&gt;</label>
+            <label class="opt"><input type="radio" name="q5" value="d"> &lt;nav&gt;</label>
+          </div>
+        </li>
+
+        <!-- 6 -->
+        <li class="q" data-answer="a" data-expl="Los encabezados van de h1 (más importante) a h6 (menos).">
+          <div class="qtext">6. ¿Cuál es la etiqueta que representa el encabezado más importante del documento?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q6" value="a"> &lt;h1&gt;</label>
+            <label class="opt"><input type="radio" name="q6" value="b"> &lt;h6&gt;</label>
+            <label class="opt"><input type="radio" name="q6" value="c"> &lt;header&gt;</label>
+            <label class="opt"><input type="radio" name="q6" value="d"> &lt;title&gt;</label>
+          </div>
+        </li>
+
+        <!-- 7 -->
+        <li class="q" data-answer="d" data-expl="Las listas ordenadas usan &lt;ol&gt; y &lt;li&gt; para elementos; listas sin orden usan &lt;ul&gt;.">
+          <div class="qtext">7. ¿Qué etiqueta se usa para crear una lista ordenada (numerada)?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q7" value="a"> &lt;ul&gt;</label>
+            <label class="opt"><input type="radio" name="q7" value="b"> &lt;li&gt;</label>
+            <label class="opt"><input type="radio" name="q7" value="c"> &lt;list&gt;</label>
+            <label class="opt"><input type="radio" name="q7" value="d"> &lt;ol&gt;</label>
+          </div>
+        </li>
+
+        <!-- 8 -->
+        <li class="q" data-answer="c" data-expl="Los elementos de bloque ocupan todo el ancho y crean saltos (ej. div, p). Inline no crea saltos.">
+          <div class="qtext">8. ¿Cuál de estas afirmaciones describe un elemento 'inline'?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q8" value="a"> Ocupa todo el ancho de la página</label>
+            <label class="opt"><input type="radio" name="q8" value="b"> Siempre crea saltos de línea antes y después</label>
+            <label class="opt"><input type="radio" name="q8" value="c"> Se integra en la línea con otros elementos (ej. &lt;span&gt;)</label>
+            <label class="opt"><input type="radio" name="q8" value="d"> Solo puede contener texto</label>
+          </div>
+        </li>
+
+        <!-- 9 -->
+        <li class="q" data-answer="b" data-expl="El atributo href de &lt;link rel='stylesheet' href='...'&gt; enlaza CSS; también se usa &lt;style&gt; en head.">
+          <div class="qtext">9. ¿Cómo enlazas una hoja de estilo CSS externa en HTML?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q9" value="a"> &lt;script src="styles.css"&gt;</label>
+            <label class="opt"><input type="radio" name="q9" value="b"> &lt;link rel="stylesheet" href="styles.css"&gt;</label>
+            <label class="opt"><input type="radio" name="q9" value="c"> &lt;css href="styles.css"&gt;</label>
+            <label class="opt"><input type="radio" name="q9" value="d"> &lt;style src="styles.css"&gt;</label>
+          </div>
+        </li>
+
+        <!-- 10 -->
+        <li class="q" data-answer="a" data-expl="El atributo type en input define el tipo; text es para entrada de texto simple.">
+          <div class="qtext">10. ¿Qué tipo de &lt;input&gt; se utiliza para capturar texto corto?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q10" value="a"> &lt;input type="text"&gt;</label>
+            <label class="opt"><input type="radio" name="q10" value="b"> &lt;textarea&gt;</label>
+            <label class="opt"><input type="radio" name="q10" value="c"> &lt;input type="password"&gt;</label>
+            <label class="opt"><input type="radio" name="q10" value="d"> &lt;input type="file"&gt;</label>
+          </div>
+        </li>
+
+        <!-- 11 -->
+        <li class="q" data-answer="c" data-expl="El atributo lang en &lt;html lang='es'&gt; declara el idioma para accesibilidad y buscadores.">
+          <div class="qtext">11. ¿Dónde especificas el idioma principal del documento HTML?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q11" value="a"> &lt;meta name="language"&gt;</label>
+            <label class="opt"><input type="radio" name="q11" value="b"> &lt;body lang="es"&gt;</label>
+            <label class="opt"><input type="radio" name="q11" value="c"> &lt;html lang="es"&gt;</label>
+            <label class="opt"><input type="radio" name="q11" value="d"> &lt;head lang="es"&gt;</label>
+          </div>
+        </li>
+
+        <!-- 12 -->
+        <li class="q" data-answer="b" data-expl="El elemento &lt;meta charset='utf-8'&gt; indica la codificación de caracteres (UTF-8 recomendado).">
+          <div class="qtext">12. ¿Cuál etiqueta define la codificación de caracteres (p. ej. UTF-8)?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q12" value="a"> &lt;encoding&gt;</label>
+            <label class="opt"><input type="radio" name="q12" value="b"> &lt;meta charset="utf-8"&gt;</label>
+            <label class="opt"><input type="radio" name="q12" value="c"> &lt;char set="utf-8"&gt;</label>
+            <label class="opt"><input type="radio" name="q12" value="d"> &lt;head charset="utf-8"&gt;</label>
+          </div>
+        </li>
+
+        <!-- 13 -->
+        <li class="q" data-answer="d" data-expl="El atributo 'disabled' deshabilita campos; 'readonly' permite ver el valor sin editarlo.">
+          <div class="qtext">13. ¿Qué atributo evita que el usuario modifique un campo de formulario?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q13" value="a"> required</label>
+            <label class="opt"><input type="radio" name="q13" value="b"> placeholder</label>
+            <label class="opt"><input type="radio" name="q13" value="c"> value</label>
+            <label class="opt"><input type="radio" name="q13" value="d"> readonly</label>
+          </div>
+        </li>
+
+        <!-- 14 -->
+        <li class="q" data-answer="a" data-expl="El atributo title ofrece info adicional; aria-label y alt son para accesibilidad.">
+          <div class="qtext">14. ¿Qué atributo se usa para mostrar información (tooltip) al pasar el cursor por un elemento?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q14" value="a"> title</label>
+            <label class="opt"><input type="radio" name="q14" value="b"> tooltip</label>
+            <label class="opt"><input type="radio" name="q14" value="c"> hint</label>
+            <label class="opt"><input type="radio" name="q14" value="d"> alt</label>
+          </div>
+        </li>
+
+        <!-- 15 -->
+        <li class="q" data-answer="b" data-expl="Una tabla usa &lt;table&gt;, filas con &lt;tr&gt; y celdas con &lt;td&gt; o &lt;th&gt;.">
+          <div class="qtext">15. Para crear filas y celdas en una tabla HTML usamos:</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q15" value="a"> &lt;row&gt; y &lt;cell&gt;</label>
+            <label class="opt"><input type="radio" name="q15" value="b"> &lt;tr&gt; y &lt;td&gt;</label>
+            <label class="opt"><input type="radio" name="q15" value="c"> &lt;list&gt; y &lt;item&gt;</label>
+            <label class="opt"><input type="radio" name="q15" value="d"> &lt;table-row&gt; y &lt;table-cell&gt;</label>
+          </div>
+        </li>
+
+        <!-- 16 -->
+        <li class="q" data-answer="c" data-expl="Los comentarios en HTML se escriben <!-- comentario --> y no aparecen en la página renderizada.">
+          <div class="qtext">16. ¿Cuál es la sintaxis correcta para un comentario en HTML?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q16" value="a"> // comentario</label>
+            <label class="opt"><input type="radio" name="q16" value="b"> &lt;!--- comentario --&gt;</label>
+            <label class="opt"><input type="radio" name="q16" value="c"> &lt;!-- comentario --&gt;</label>
+            <label class="opt"><input type="radio" name="q16" value="d"> /* comentario */</label>
+          </div>
+        </li>
+
+        <!-- 17 -->
+        <li class="q" data-answer="a" data-expl="El atributo 'src' indica la URL o ruta del recurso (imagen, script).">
+          <div class="qtext">17. ¿Cuál atributo es obligatorio en &lt;img&gt; para indicar la ruta del archivo?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q17" value="a"> src</label>
+            <label class="opt"><input type="radio" name="q17" value="b"> href</label>
+            <label class="opt"><input type="radio" name="q17" value="c"> link</label>
+            <label class="opt"><input type="radio" name="q17" value="d"> file</label>
+          </div>
+        </li>
+
+        <!-- 18 -->
+        <li class="q" data-answer="b" data-expl="Semánticos como header, nav, main, footer ayudan a la estructura y accesibilidad.">
+          <div class="qtext">18. ¿Cuál etiqueta semántica se usa para agrupar enlaces de navegación principal?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q18" value="a"> &lt;menu&gt;</label>
+            <label class="opt"><input type="radio" name="q18" value="b"> &lt;nav&gt;</label>
+            <label class="opt"><input type="radio" name="q18" value="c"> &lt;aside&gt;</label>
+            <label class="opt"><input type="radio" name="q18" value="d"> &lt;section&gt;</label>
+          </div>
+        </li>
+
+        <!-- 19 -->
+        <li class="q" data-answer="d" data-expl="El atributo 'target' de &lt;a&gt; define dónde abrir el enlace; _blank abre nueva pestaña.">
+          <div class="qtext">19. ¿Qué valor del atributo target abre un enlace en una nueva pestaña?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q19" value="a"> _self</label>
+            <label class="opt"><input type="radio" name="q19" value="b"> _parent</label>
+            <label class="opt"><input type="radio" name="q19" value="c"> _top</label>
+            <label class="opt"><input type="radio" name="q19" value="d"> _blank</label>
+          </div>
+        </li>
+
+        <!-- 20 -->
+        <li class="q" data-answer="a" data-expl="HTML estructura contenido; CSS se encarga del diseño; JS añade comportamiento.">
+          <div class="qtext">20. ¿Qué hace HTML en una página web, comparado con CSS y JavaScript?</div>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q20" value="a"> Estructura el contenido</label>
+            <label class="opt"><input type="radio" name="q20" value="b"> Agrega interactividad avanzada</label>
+            <label class="opt"><input type="radio" name="q20" value="c"> Define la base de datos</label>
+            <label class="opt"><input type="radio" name="q20" value="d"> Ejecuta código en el servidor</label>
+          </div>
+        </li>
+      </ol>
+
+      <div class="footer">
+        <div class="controls">
+          <button id="checkBtn">Calificar</button>
+          <button class="secondary" id="showAnswersBtn">Mostrar respuestas correctas</button>
+          <button class="secondary" id="resetBtn">Reiniciar</button>
+        </div>
+        <div class="small">Puntuación: <span id="scoreDisplay">0 / 20</span></div>
+      </div>
+
+      <div id="resultBox" class="result card" aria-live="polite"></div>
+    </main>
+
+    <footer style="margin-top:14px; text-align:center; color:var(--muted); font-size:13px;">
+      Guarda este archivo como <strong>.htm</strong> y ábrelo en tu navegador. Puedes editar preguntas, respuestas y explicaciones directamente en el código.
+    </footer>
+  </div>
+
+  <script>
+    // Helper: get all question elements
+    const questions = Array.from(document.querySelectorAll('li.q'));
+    const checkBtn = document.getElementById('checkBtn');
+    const showAnswersBtn = document.getElementById('showAnswersBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultBox = document.getElementById('resultBox');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+
+    function grade(){
+      let score = 0;
+      resultBox.innerHTML = '';
+      resultBox.classList.add('show');
+      const frag = document.createDocumentFragment();
+
+      questions.forEach((qEl, idx) => {
+        const qNum = idx + 1;
+        const correct = qEl.dataset.answer;
+        // find selected radio
+        const selected = qEl.querySelector('input[type="radio"]:checked');
+        const chosen = selected ? selected.value : null;
+
+        // Create feedback container
+        const p = document.createElement('div');
+        p.style.padding = '8px 0';
+        const qTitle = document.createElement('div');
+        qTitle.innerHTML = `<strong>Pregunta ${qNum}:</strong>`;
+        p.appendChild(qTitle);
+
+        if (chosen === correct){
+          score++;
+          const ok = document.createElement('div');
+          ok.className = 'correct';
+          ok.textContent = 'Respuesta correcta ✓';
+          p.appendChild(ok);
+        } else if (chosen === null){
+          const no = document.createElement('div');
+          no.className = 'incorrect';
+          no.textContent = 'No seleccionaste respuesta.';
+          p.appendChild(no);
+        } else {
+          const no = document.createElement('div');
+          no.className = 'incorrect';
+          no.textContent = `Respuesta incorrecta ✗ (Tu elección: ${chosen.toUpperCase()})`;
+          p.appendChild(no);
+        }
+
+        // explanation (if provided)
+        const explRaw = qEl.getAttribute('data-expl') || '';
+        const expl = document.createElement('div');
+        expl.className = 'explain';
+        // Clean up explanation text if it's in HTML comment form
+        let explText = explRaw.replace(/^\s*<!-+/, '').replace(/-+>\s*$/, '').trim();
+        if (!explText) explText = 'Explicación no disponible.';
+        expl.innerHTML = explText;
+        p.appendChild(expl);
+
+        frag.appendChild(p);
+
+        // Visual marking on question card
+        qEl.style.borderColor = (chosen === correct) ? 'rgba(25,135,84,0.25)' : 'rgba(220,53,69,0.25)';
+        qEl.style.background = (chosen === correct) ? 'linear-gradient(90deg, rgba(25,135,84,0.03), transparent)' : (chosen ? 'linear-gradient(90deg, rgba(220,53,69,0.03), transparent)' : '');
+      });
+
+      const scoreDiv = document.createElement('div');
+      scoreDiv.className = 'score';
+      scoreDiv.textContent = `Puntaje final: ${score} / ${questions.length}`;
+      frag.insertBefore(scoreDiv, frag.firstChild);
+
+      // Suggestion
+      const suggestion = document.createElement('div');
+      suggestion.className = 'small';
+      suggestion.style.marginTop = '8px';
+      suggestion.textContent = 'Revisa las explicaciones y vuelve a intentarlo si quieres mejorar tu puntuación.';
+      frag.appendChild(suggestion);
+
+      resultBox.appendChild(frag);
+      scoreDisplay.textContent = `${score} / ${questions.length}`;
+      // Scroll to result
+      resultBox.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    function showAnswers(){
+      // Reveal correct answers visually and mark radios
+      questions.forEach((qEl, idx) => {
+        const correct = qEl.dataset.answer;
+        // highlight correct label
+        const labels = Array.from(qEl.querySelectorAll('label.opt'));
+        labels.forEach(lbl => {
+          const input = lbl.querySelector('input[type="radio"]');
+          if (!input) return;
+          if (input.value === correct){
+            lbl.style.border = '1px solid rgba(11,116,222,0.15)';
+            lbl.style.background = 'linear-gradient(90deg, rgba(11,116,222,0.03), transparent)';
+            lbl.style.fontWeight = '700';
+            // check it
+            input.checked = true;
+          } else {
+            lbl.style.opacity = '0.75';
+          }
+        });
+      });
+      // optionally grade after revealing answers
+      grade();
+    }
+
+    function resetQuiz(){
+      // reset visuals and selections
+      questions.forEach(qEl => {
+        const inputs = Array.from(qEl.querySelectorAll('input[type="radio"]'));
+        inputs.forEach(i => i.checked = false);
+        qEl.style.borderColor = 'transparent';
+        qEl.style.background = 'transparent';
+        const labels = Array.from(qEl.querySelectorAll('label.opt'));
+        labels.forEach(lbl => {
+          lbl.style.border = '1px solid transparent';
+          lbl.style.background = 'transparent';
+          lbl.style.fontWeight = '400';
+          lbl.style.opacity = '1';
+        });
+      });
+      scoreDisplay.textContent = `0 / ${questions.length}`;
+      resultBox.classList.remove('show');
+      resultBox.innerHTML = '';
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    // Event bindings
+    checkBtn.addEventListener('click', grade);
+    showAnswersBtn.addEventListener('click', showAnswers);
+    resetBtn.addEventListener('click', resetQuiz);
+
+    // Allow pressing Enter to submit when focused on radio
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        grade();
+      }
+    });
+
+    // Accessibility: focus styles for labels
+    Array.from(document.querySelectorAll('label.opt')).forEach(lbl=>{
+      lbl.tabIndex = 0;
+      lbl.addEventListener('keypress', (e)=>{
+        if (e.key === ' ' || e.key === 'Enter') {
+          const input = lbl.querySelector('input');
+          if (input) input.checked = true;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
